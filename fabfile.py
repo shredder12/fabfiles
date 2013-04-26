@@ -7,8 +7,15 @@ env.roledefs = roles_dict
 def check_update():
     run("apt-get update")
 
+def upgrade():
+    run("apt-get -y upgrade")
+
 def check_ubuntu_cloud_repo():
     run("ls -l /etc/apt/sources.list.d")
+
+def add_ubuntu_cloud_repo():
+    run("echo 'deb http://ubuntu-cloud.archive.canonical.com/ubuntu \
+        precise-updates/grizzly main' > /etc/apt/sources.list.d/ubuntu-cloud.list")
 
 def swift_all_start():
     with settings(parallel=True):
